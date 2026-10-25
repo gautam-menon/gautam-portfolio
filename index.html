@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#132b35">
+  <meta name="description" content="Academic portfolio of Gautam Menon — computer science, applied machine learning, mobile software engineering, and research interests.">
+  <title>Gautam Menon — Academic Portfolio</title>
+  <style>
+    :root {
+      --ink: #172b34;
+      --muted: #5d6c72;
+      --paper: #f7f6f1;
+      --white: #fffefa;
+      --line: #dce2dc;
+      --navy: #132b35;
+      --navy-2: #1c3c47;
+      --teal: #2a756d;
+      --teal-light: #dbece6;
+      --gold: #bf8d49;
+      --gold-light: #f0e3cd;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(20, 43, 53, .08);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+    .skip-link { position: absolute; left: -9999px; top: 8px; background: white; padding: 10px 14px; z-index: 99; }
+    .skip-link:focus { left: 8px; }
+    .wrap { width: min(1160px, calc(100% - 44px)); margin: 0 auto; }
+    .site-header { position: sticky; top: 0; z-index: 20; background: rgba(247,246,241,.92); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(220,226,220,.85); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { font-weight: 760; letter-spacing: -.04em; text-decoration: none; font-size: 1.02rem; }
+    .brand span { color: var(--teal); }
+    .nav-links { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 650; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta { color: var(--white) !important; background: var(--navy); padding: 10px 15px; border-radius: 999px; }
+
+    .hero { background: var(--navy); color: #f8f7f1; overflow: hidden; position: relative; }
+    .hero:before { content: ""; position: absolute; width: 560px; height: 560px; border: 1px solid rgba(219,236,230,.14); border-radius: 50%; right: -145px; top: -260px; box-shadow: 0 0 0 45px rgba(219,236,230,.025), 0 0 0 100px rgba(219,236,230,.02); }
+    .hero:after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 78% 58%, rgba(42,117,109,.27), transparent 34%); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1.25fr) minmax(270px,.75fr); gap: 68px; align-items: center; padding: 88px 0 78px; }
+    .eyebrow { display: inline-flex; gap: 10px; align-items: center; text-transform: uppercase; letter-spacing: .16em; font-size: .7rem; font-weight: 780; color: #b3d8cd; }
+    .eyebrow:before { content: ""; width: 30px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(3.2rem, 6vw, 5.7rem); line-height: .98; letter-spacing: -.055em; margin: 24px 0 24px; max-width: 720px; }
+    h1 em { color: #b4d8cd; font-weight: 400; }
+    .hero-lede { max-width: 665px; color: #d0dcd9; font-size: clamp(1rem,1.6vw,1.16rem); line-height: 1.8; margin-bottom: 28px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 25px 0 32px; }
+    .hero-tags span { color: #e2eae6; border: 1px solid rgba(226,234,230,.22); border-radius: 999px; padding: 6px 11px; font-size: .76rem; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 999px; text-decoration: none; padding: 12px 18px; font-size: .88rem; font-weight: 720; border: 1px solid transparent; transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: #c6e2d8; color: var(--navy); }
+    .button.ghost { border-color: rgba(255,255,255,.28); color: #f8f7f1; }
+    .button.dark { background: var(--navy); color: white; }
+    .button.outline { border-color: var(--line); color: var(--ink); background: transparent; }
+    .hero-portrait { max-width: 365px; justify-self: end; width: 100%; position: relative; }
+    .portrait-frame { aspect-ratio: 4 / 5; border-radius: 180px 180px 24px 24px; border: 1px solid rgba(255,255,255,.25); overflow: hidden; background: linear-gradient(145deg, #315b60, #1c3c47 52%, #0c2029); position: relative; }
+    .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
+    .portrait-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 30px; color: rgba(255,255,255,.85); }
+    .portrait-placeholder .monogram { font-family: var(--serif); font-size: 5.4rem; color: #d5e8e0; line-height: 1; border: 1px solid rgba(255,255,255,.28); width: 145px; height: 145px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 22px; }
+    .portrait-placeholder small { color: #b7cec9; line-height: 1.5; max-width: 185px; }
+    .portrait-note { position: absolute; bottom: -17px; left: -24px; background: var(--white); color: var(--ink); padding: 16px 18px; border-radius: 14px; box-shadow: var(--shadow); max-width: 220px; }
+    .portrait-note strong { display: block; font-size: .86rem; }
+    .portrait-note span { font-size: .75rem; color: var(--muted); }
+    .hero-footnote { color: #a8c1bb; font-size: .78rem; margin-top: 28px; }
+
+    section { padding: 92px 0; }
+    .section-top { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 38px; }
+    .section-label { text-transform: uppercase; letter-spacing: .16em; color: var(--teal); font-size: .72rem; font-weight: 800; margin-bottom: 12px; }
+    h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -.045em; margin-bottom: 0; }
+    .section-intro { max-width: 440px; color: var(--muted); font-size: .95rem; margin-bottom: 2px; }
+    .education { background: var(--white); }
+    .education-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 22px; }
+    .degree-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 21px; min-width: 0; background: #fffefa; }
+    .degree-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+    .degree-kind { font-size: .7rem; text-transform: uppercase; font-weight: 800; letter-spacing: .13em; color: var(--teal); }
+    .degree-year { white-space: nowrap; color: var(--muted); font-size: .81rem; border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px; }
+    .degree-card h3 { font-family: var(--serif); font-size: 1.65rem; font-weight: 500; line-height: 1.2; letter-spacing: -.025em; margin: 11px 0 8px; }
+    .institution { color: var(--muted); font-size: .89rem; margin-bottom: 13px; }
+    .degree-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; color: var(--teal); background: var(--teal-light); padding: 6px 10px; border-radius: 999px; font-weight: 700; }
+    .chip.gold { color: #775322; background: var(--gold-light); }
+    .degree-preview { min-height: 172px; border-radius: 14px; overflow: hidden; position: relative; background: #f1f1ea; border: 1px dashed #c8d1c8; }
+    .degree-preview img { display: block; width: 100%; height: 100%; min-height: 172px; object-fit: cover; position: absolute; inset: 0; }
+    .preview-placeholder { min-height: 172px; display: flex; justify-content: center; align-items: center; gap: 15px; padding: 24px; color: var(--muted); }
+    .preview-placeholder .cap { width: 48px; height: 48px; border-radius: 13px; display: grid; place-items: center; color: var(--teal); background: white; font-size: 1.4rem; flex: 0 0 auto; }
+    .preview-placeholder b { color: var(--ink); display: block; font-size: .85rem; }
+    .preview-placeholder span { display: block; font-size: .74rem; margin-top: 3px; }
+    .degree-detail { color: var(--muted); font-size: .88rem; margin: 0; }
+    .file-hint { border-top: 1px solid var(--line); padding-top: 14px; color: #74827d; font-size: .75rem; }
+
+    .research { background: #eaf0eb; }
+    .research-layout { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(260px,.9fr); gap: 28px; align-items: stretch; }
+    .research-main { background: var(--white); border-radius: var(--radius); padding: clamp(26px,4vw,42px); box-shadow: var(--shadow); }
+    .status-line { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+    .status { background: #f2e7d4; color: #775322; padding: 6px 10px; border-radius: 999px; font-size: .71rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+    .paper-kind { color: var(--muted); font-size: .77rem; }
+    .research-main h3 { font-family: var(--serif); font-size: clamp(1.8rem,3vw,2.55rem); font-weight: 500; line-height: 1.15; letter-spacing: -.035em; margin-bottom: 12px; }
+    .authors { font-size: .83rem; color: var(--muted); margin-bottom: 24px; }
+    .research-main p { color: var(--muted); font-size: .92rem; }
+    .research-points { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 26px 0; }
+    .research-point { border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+    .research-point b { display: block; font-size: .82rem; }
+    .research-point span { display: block; margin-top: 4px; color: var(--muted); font-size: .75rem; }
+    .research-side { background: var(--navy); color: #f7f6f1; border-radius: var(--radius); padding: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+    .research-side:after { content: ""; position: absolute; width: 270px; height: 270px; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; right: -100px; top: -85px; box-shadow: 0 0 0 36px rgba(255,255,255,.025); }
+    .research-side > * { position: relative; z-index: 1; }
+    .paper-art { height: 155px; border: 1px solid rgba(255,255,255,.2); background: linear-gradient(155deg, rgba(194,226,216,.12), rgba(194,226,216,.02)); border-radius: 14px; display: grid; place-items: center; margin-bottom: 30px; }
+    .paper-icon { width: 75px; height: 95px; border: 1px solid #c6e2d8; border-radius: 7px; position: relative; transform: rotate(-5deg); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 14px 11px; }
+    .paper-icon:before { content: ""; position: absolute; right: -1px; top: -1px; width: 19px; height: 19px; border-left: 1px solid #c6e2d8; border-bottom: 1px solid #c6e2d8; background: var(--navy); }
+    .paper-icon span { display: block; height: 2px; width: 100%; background: #c6e2d8; opacity: .8; }
+    .paper-icon span:first-child { width: 54%; }
+    .research-side h3 { font-family: var(--serif); font-size: 1.65rem; font-weight: 500; line-height: 1.2; margin-bottom: 12px; }
+    .research-side p { color: #c4d4d0; font-size: .86rem; }
+    .paper-meta { display: flex; gap: 10px; flex-wrap: wrap; margin: 19px 0 28px; }
+    .paper-meta span { border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 5px 9px; color: #d9e7e2; font-size: .72rem; }
+
+    .project-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+    .project-card { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+    .project-visual { height: 245px; position: relative; overflow: hidden; background: #e7eee8; }
+    .project-visual.skin { background: linear-gradient(135deg,#d5e4df,#edf0e9 55%,#c5d8d0); }
+    .project-visual.watch { background: linear-gradient(140deg,#1c3c47,#2a756d); }
+    .project-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.78) brightness(.82); }
+    .visual-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; color: #3b6964; }
+    .watch .visual-placeholder { color: #e2eee9; }
+    .visual-symbol { width: 74px; height: 74px; border: 1px solid currentColor; border-radius: 22px; display: grid; place-items: center; font-size: 2rem; margin-bottom: 15px; background: rgba(255,255,255,.2); }
+    .visual-placeholder strong { font-size: .85rem; }
+    .visual-placeholder span { font-size: .75rem; max-width: 255px; opacity: .85; margin-top: 3px; }
+    .project-content { padding: 26px; }
+    .project-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .project-type { font-size: .72rem; color: var(--teal); letter-spacing: .11em; font-weight: 800; text-transform: uppercase; }
+    .project-year { color: var(--muted); font-size: .76rem; }
+    .project-content h3 { font-family: var(--serif); font-weight: 500; font-size: 1.55rem; line-height: 1.2; letter-spacing: -.025em; margin-bottom: 12px; }
+    .project-content p { color: var(--muted); font-size: .88rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .project-tags span { font-size: .72rem; border: 1px solid var(--line); padding: 5px 8px; border-radius: 999px; color: #52666c; }
+
+    .experience { background: var(--white); }
+    .experience-layout { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr); gap: 65px; align-items: start; }
+    .experience-aside { position: sticky; top: 110px; }
+    .experience-aside p { color: var(--muted); font-size: .95rem; margin: 20px 0 24px; }
+    .experience-note { background: var(--teal-light); color: #285b54; border-radius: 15px; padding: 19px; font-size: .82rem; }
+    .timeline { border-left: 1px solid #c6d3cc; padding-left: 27px; }
+    .job { position: relative; padding: 0 0 33px; }
+    .job:last-child { padding-bottom: 0; }
+    .job:before { content: ""; position: absolute; left: -33px; top: 8px; width: 11px; height: 11px; border: 3px solid var(--white); outline: 1px solid var(--teal); background: var(--teal); border-radius: 50%; }
+    .job-date { font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 800; color: var(--teal); }
+    .job h3 { font-size: 1.12rem; margin: 7px 0 4px; }
+    .job-company { font-size: .85rem; color: var(--muted); margin-bottom: 10px; }
+    .job ul { padding-left: 18px; margin: 0; color: var(--muted); font-size: .86rem; }
+    .job li { margin: 4px 0; padding-left: 3px; }
+    .inline-link { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; font-weight: 650; }
+
+    .skills { background: var(--paper); padding: 28px 0 72px; border-top: 1px solid var(--line); }
+    .skills h2 { font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.1; color: #59686b; font-family: var(--serif); font-weight: 500; letter-spacing: -.045em; margin-bottom: 26px; padding-right: 24px; }
+    .skills .section-label { color: #89938e; font-size: .62rem; margin-bottom: 7px; }
+    .skills-layout { display: grid; grid-template-columns: minmax(135px,.35fr) minmax(0,1.65fr); gap: 28px; align-items: start; }
+    .skills-lede { color: var(--muted); max-width: 350px; font-size: .82rem; margin-top: 14px; }
+    .skills-stack { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 24px; row-gap: 6px; }
+    .skill-group { background: transparent; border: 0; border-bottom: 1px solid #e5e7e1; border-radius: 0; padding: 8px 0 12px; }
+    .skill-group h3 { margin-bottom: 7px; font-size: 1.05rem; color: #73807e; font-weight: 700; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 5px; }
+    .skill-list span { padding: 4px 8px; border-radius: 4px; background: transparent; border: 1px solid #e1e5df; color: #78827f; font-size: .88rem; }
+
+    .beyond { background: var(--paper); }
+    .beyond-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 22px; }
+    .media-card, .personal-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; min-width: 0; }
+    .media-card .section-label, .personal-card .section-label { margin-bottom: 8px; }
+    .media-card h3, .personal-card h3 { font-family: var(--serif); font-size: 1.65rem; font-weight: 500; margin-bottom: 10px; letter-spacing: -.03em; }
+    .media-card > p, .personal-card > p { color: var(--muted); font-size: .86rem; }
+    .video-shell { position: relative; margin-top: 21px; aspect-ratio: 16/9; border-radius: 14px; background: #132b35; overflow: hidden; }
+    .video-shell > a { position: relative; display: block; width: 100%; height: 100%; color: white; }
+    .video-shell img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video-play { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; display: grid; place-items: center; padding-left: 4px; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(19,43,53,.88); color: white; font-size: 1.4rem; box-shadow: 0 0 0 1px rgba(255,255,255,.65); }
+    .media-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+    .media-foot span { color: var(--muted); font-size: .75rem; }
+    .personal-stack { display: grid; gap: 14px; margin-top: 20px; }
+    .personal-item { display: flex; gap: 14px; align-items: start; border: 1px solid var(--line); border-radius: 13px; padding: 15px; }
+    .personal-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--teal-light); color: var(--teal); display: grid; place-items: center; flex: 0 0 auto; font-size: 1.05rem; }
+    .personal-item b { font-size: .85rem; display: block; }
+    .personal-item p { color: var(--muted); font-size: .77rem; margin: 3px 0 0; }
+    .language-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .language-row span { background: var(--gold-light); color: #765a2d; border-radius: 999px; font-size: .76rem; font-weight: 700; padding: 7px 10px; }
+
+    .contact { background: var(--navy); color: #f8f7f1; padding: 76px 0; }
+    .contact-layout { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(280px,.9fr); align-items: center; gap: clamp(32px,7vw,90px); }
+    .contact .section-label { color: #b3d8cd; }
+    .contact h2 { max-width: 660px; }
+    .contact p { color: #c4d4d0; max-width: 500px; margin: 17px 0 0; font-size: .92rem; }
+    .contact-copy .button { margin-top: 24px; }
+    .contact-links { border-top: 1px solid rgba(255,255,255,.2); }
+    .contact-links a { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 15px 0; color: #f8f7f1; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.2); transition: color .2s ease; }
+    .contact-links a:hover { color: #b3d8cd; }
+    .contact-link-label { color: #a8c1bb; font-size: .72rem; }
+    .contact-link-value { font-size: .86rem; font-weight: 650; text-align: right; }
+    .contact .button.primary:hover { background: #d7eee5; }
+    footer { padding: 22px 0; background: #0c2029; color: #a8beb8; font-size: .74rem; }
+    .footer-inner { display: flex; justify-content: flex-end; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+
+    /* Context photos are attached to the section they illustrate, not collected in a gallery. */
+    .context-photo { margin: 26px 0 0; border-radius: 15px; overflow: hidden; background: #edf0e9; border: 1px solid var(--line); }
+    .context-photo img { width: 100%; height: 100%; max-height: 240px; aspect-ratio: 16 / 7; object-fit: cover; display: block; }
+    .context-photo-caption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 10px 14px; color: var(--muted); font-size: .72rem; }
+    .context-photo-caption strong { color: var(--ink); font-size: .76rem; }
+    .context-photo-caption code { font-size: .69rem; }
+    .education-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; width: 100%; margin-top: 26px; padding: 0 48px; }
+    .education-photos .context-photo { aspect-ratio: 4 / 5; margin: 0; }
+    .education-photos img { max-height: none; aspect-ratio: 4 / 5; }
+    .workplace-photo img { aspect-ratio: 9/16; max-height: 720px; }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 13px; }
+      .nav-links a { font-size: .76rem; }
+      .hero-grid { gap: 35px; padding: 70px 0; }
+      .experience-layout, .skills-layout { gap: 36px; }
+    }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 32px, 560px); }
+      .nav { min-height: 66px; }
+      .nav-links { display: none; }
+      .hero-grid { grid-template-columns: 1fr; padding: 64px 0 58px; }
+      .hero-portrait { justify-self: start; width: min(70%, 270px); margin: 10px 0 0 20px; }
+      .portrait-note { left: -20px; }
+      section { padding: 68px 0; }
+      .section-top { display: block; margin-bottom: 28px; }
+      .section-intro { margin-top: 15px; }
+      .education-grid, .research-layout, .project-grid, .experience-layout, .skills-layout, .skills-stack, .beyond-grid { grid-template-columns: 1fr; }
+      .education-photos { grid-template-columns: 1fr; }
+      .experience-aside { position: static; }
+      .experience-layout, .skills-layout { gap: 28px; }
+      .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 420px) {
+      h1 { font-size: 3.1rem; }
+      .hero-actions .button { width: 100%; }
+      .research-points { grid-template-columns: 1fr; }
+      .degree-card, .project-content, .media-card, .personal-card { padding: 20px; }
+      .context-photo-caption { display: block; }
+      .context-photo-caption span { display: block; margin-top: 3px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+  .project-repo { margin: 10px 0 0; font-size: .9rem; }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top">GM<span>.</span> <span style="color:var(--muted);font-weight:500">Academic Portfolio</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#education">Education</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#beyond">Beyond work</a><a class="nav-cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" style="padding:0">
+      <div class="wrap hero-grid">
+        <div>
+       
+          <h1>Gautam<br><em>Menon.</em></h1>
+          <p class="hero-lede">I build software at the intersection of mobile engineering and applied machine learning. With a computer science background and experience shipping products for large, high-visibility sports and automotive clients, I’m preparing to take my work deeper through doctoral research.</p>
+          <div class="hero-tags"><span>Computer Vision</span><span>Mobile & On-device ML</span><span>Intelligent Systems</span><span>Human-centred Computing</span></div>
+          <div class="hero-actions"><a class="button ghost" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="button primary" href="#research">Explore my research <span aria-hidden="true">↘</span></a>
+            <a class="button ghost" href="assets/documents/Gautam-Menon-CV.pdf" target="_blank" rel="noopener">View CV <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-footnote">Mumbai, India · Open to PhD opportunities</p>
+        </div>
+        <div class="hero-portrait">
+          <div class="portrait-frame">
+            <img src="assets/images/profile.jpeg" alt="Portrait of Gautam Menon" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+          </div>
+          <div class="portrait-note"><strong>Engineer by practice.</strong><span>Researcher by curiosity.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="education" id="education">
+      <div class="wrap">
+        <div class="section-top"><div><div class="section-label">Academic background</div><h2>Education</h2></div><p class="section-intro">My academic path started with computer science fundamentals and continued into data science. Add certificate scans or degree documents to the clearly marked spaces below.</p></div>
+        <div class="education-grid">
+          <article class="degree-card">
+            <div class="degree-top"><div><div class="degree-kind">Postgraduate degree</div><h3>Master of Science<br>Computer Science — Data Science</h3><p class="institution">University of Mumbai</p><div class="degree-tags"><span class="chip gold">Ranked 2nd</span><span class="chip">Data Science specialisation</span></div></div><div class="degree-year">2024</div></div>
+            <div class="degree-preview">
+              <img src="assets/images/masters-degree.jpg" alt="Master's degree certificate image" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+              <div class="preview-placeholder"><div class="cap" aria-hidden="true">✦</div><div><b>Master’s degree document</b><span>Open the degree PDF below to view the document.</span></div></div>
+            </div>
+            <p class="degree-detail">Specialisation in Data Science, with a strong foundation for work involving data analysis, predictive modelling, and machine learning.</p>
+            <p class="file-hint"><a class="inline-link" href="assets/degrees/masters-degree.pdf" target="_blank" rel="noopener">View Master’s degree document (PDF) ↗</a></p>
+          </article>
+          <article class="degree-card">
+            <div class="degree-top"><div><div class="degree-kind">Undergraduate degree</div><h3>Bachelor of Science<br>Computer Science</h3><p class="institution">University of Mumbai</p><div class="degree-tags"><span class="chip">Score listed on CV: 9.15</span><span class="chip gold">Computer Science</span></div></div><div class="degree-year">2022</div></div>
+            <div class="degree-preview">
+              <img src="assets/images/bachelors-degree.jpg" alt="Bachelor's degree certificate image" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+              <div class="preview-placeholder"><div class="cap" aria-hidden="true">✦</div><div><b>Bachelor’s degree document</b><span>Open the degree PDF below to view the document.</span></div></div>
+            </div>
+            <p class="degree-detail">Undergraduate training in computer science, forming the base for subsequent software engineering and applied technology projects.</p>
+            <p class="file-hint"><a class="inline-link" href="assets/degrees/bachelors-degree.pdf" target="_blank" rel="noopener">View Bachelor’s degree document (PDF) ↗</a></p>
+          </article>
+        </div>
+        <div class="education-photos">
+          <figure class="context-photo"><img src="assets/images/classroom.jpg" alt="University classroom or campus"></figure>
+          <figure class="context-photo"><img src="assets/images/presentation.jpeg" alt="Project presentation or software demonstration"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="research" id="research">
+      <div class="wrap">
+        <div class="section-top"><div><div class="section-label">Research</div><h2>Research</h2></div><p class="section-intro">An unpublished paper on car-rental trends and two applied machine-learning projects.</p></div>
+        <div class="research-layout">
+          <article class="research-main">
+            <div class="status-line"><span class="status">Unpublished manuscript</span><span class="paper-kind">Research paper · Data analytics & ML</span></div>
+            <h3>Car Rental Pricing Trends</h3>
+            <div class="authors">Authors: Gautam Menon and Ritik Yadav</div>
+            <p>Examines car-rental demand and pricing trends, using historical and contextual factors to explore demand prediction and fleet planning.</p>
+            <div class="research-points">
+              <div class="research-point"><b>Research focus</b><span>Demand patterns, market drivers, and pricing implications</span></div>
+              <div class="research-point"><b>Methods explored</b><span>Exploratory data analysis and predictive modelling</span></div>
+              <div class="research-point"><b>Models discussed</b><span>Linear Regression, Random Forest, XGBoost</span></div>
+              <div class="research-point"><b>Tools</b><span>Python, scikit-learn, TensorFlow, data visualisation</span></div>
+            </div>
+            <p>Unpublished manuscript; not peer reviewed.</p>
+            <a class="button dark" href="assets/documents/Car-Rental-Research-Paper.pdf" target="_blank" rel="noopener">Open research PDF <span aria-hidden="true">↗</span></a>
+          </article>
+          <aside class="research-side">
+            <div>
+              <div class="paper-art" aria-hidden="true"><div class="paper-icon"><span></span><span></span><span></span><span></span></div></div>
+              <div class="section-label" style="color:#b3d8cd">Research note</div>
+              <h3>From data to decisions.</h3>
+              <p>I developed this paper using car-rental data I gathered during my internship at Zymo (formerly LetzRent). It explores how demand and pricing patterns can inform fleet planning and operational decisions.</p>
+              <div class="paper-meta"><span>Predictive analytics</span><span>Demand forecasting</span><span>Unpublished</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-top"><div><div class="section-label">Selected projects</div><h2>Projects</h2></div><p class="section-intro">Selected work in mobile machine learning and wearable computing.</p></div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-visual skin">
+              <img src="assets/projects/skin-cancer-app.jpg" alt="Screenshot of the skin cancer classification iOS application" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+              <div class="visual-placeholder"><div class="visual-symbol" aria-hidden="true">⌕</div><strong>Skin-lesion image classification</strong><span>Add an app screenshot or a model workflow illustration here.</span></div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span class="project-type">Master’s project</span><span class="project-year">iOS · Machine learning</span></div>
+              <h3>Skin Cancer Classification Using an iOS Camera</h3>
+              <p>Master’s project: an iOS camera workflow connected to a machine-learning model for skin-lesion image classification.</p>
+              <p class="project-repo"><a class="inline-link" href="https://github.com/gautam-menon/skin_cancer" target="_blank" rel="noopener">GitHub repository ↗</a></p><div class="project-tags"><span>Swift / iOS</span><span>Computer Vision</span><span>Image Classification</span><span>ML Integration</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-visual watch">
+              <img src="assets/projects/on-device-ml.png" alt="Screenshot of an Apple Watch machine-learning project" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+              <div class="visual-placeholder"><div class="visual-symbol" aria-hidden="true">◉</div><strong>Machine learning on a small device</strong><span>Optional: add your Watch app, Core ML, or model visualisation screenshot.</span></div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span class="project-type">Independent exploration</span><span class="project-year">watchOS · Core ML</span></div>
+              <h3>On-device Intelligence for Apple Platforms</h3>
+              <p>A watchOS posture-tracking project using motion sensors and Core ML for on-device classification.</p>
+              <p class="project-repo"><a class="inline-link" href="https://github.com/gautam-menon/Slacker" target="_blank" rel="noopener">GitHub repository ↗</a></p><div class="project-tags"><span>SwiftUI</span><span>watchOS</span><span>Core ML</span><span>Sensor Data</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="wrap experience-layout">
+        <div class="experience-aside">
+          <div class="section-label">Professional experience</div>
+          <h2>Professional experience</h2>
+          <p></p>
+          <div class="experience-note"><strong>Gained some corporate exposure here :)</strong><br></div>
+          <figure class="context-photo workplace-photo">
+            <img src="assets/images/office.png" alt="Gautam in a workplace" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+         
+          </figure>
+        </div>
+        <div class="timeline">
+          <article class="job">
+            <div class="job-date">February 2026 — Present</div><h3>iOS Developer</h3><div class="job-company">SI (Sportz Interactive) · Mumbai, India</div>
+            <ul><li>Contribute to high-traffic, high-stakes projects associated with Ferrari, Formula 1, and UEFA (Union of European Football Associations).</li><li>Collaborate with international teams on optimisation and product ideas.</li><li>Work with CI/CD delivery workflows, critical tagging, localisation, multiple languages, and right-to-left (RTL) integration.</li><li>App Store: <a class="inline-link" href="https://apps.apple.com/in/app/uefa-champions-league-official/id1024506667" target="_blank" rel="noopener">UEFA Champions League Official iOS app ↗</a>.</li></ul>
+          </article>
+          <article class="job">
+            <div class="job-date">July 2023 — February 2026</div><h3>Consultant — iOS Developer</h3><div class="job-company">Viral Fission · Mumbai, India</div>
+            <ul><li>Developed and maintained the Vi-Fi application serving thousands of active users.</li><li>Introduced SwiftUI practices into a UIKit / MVVM codebase and collaborated with design and backend teams in Agile/Scrum workflows.</li><li>App Store: <a class="inline-link" href="https://apps.apple.com/in/app/vi-/id1541174634" target="_blank" rel="noopener">Vi-Fi app listing</a>.</li></ul>
+          </article>
+          <article class="job">
+            <div class="job-date">May 2022 — July 2023</div><h3>Software Engineer</h3><div class="job-company">Payed International (by Sahara India) · Mumbai, India</div>
+            <ul><li>Helped support rapid growth from launch to thousands of users through scalable implementation.</li><li>Worked across native iOS (Swift / SwiftUI) and Flutter, coordinating integrations with external vendors.</li><li>Built a location-based notification system and independently developed a vendor-facing business app with real-time tracking.</li></ul>
+          </article>
+          <article class="job">
+            <div class="job-date">May 2020 — April 2022</div><h3>Software Developer — Lead Intern</h3><div class="job-company">Zymo (formerly LetzRent) · Remote</div>
+            <ul><li>Built and maintained Android and iOS applications; the CV records 50K+ downloads and 4.7+ ratings for the apps.</li><li>Developed an internal panel for monitoring bookings and real-time users.</li><li>Implemented in-app analytics to capture events and user behaviour.</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="beyond" id="beyond">
+      <div class="wrap">
+        <div class="section-top"><div><div class="section-label">Outside the CV</div><h2>Outside work</h2></div></div>
+        <div class="beyond-grid">
+          <article class="media-card">
+            <h3>I've documented a few projects of mine on YouTube as well</h3>
+            <div class="video-shell">
+              <a href="https://www.youtube.com/watch?v=wwNkId12kwg" target="_blank" rel="noopener noreferrer" aria-label="Watch the project video on YouTube in a new tab">
+                <img src="assets/images/project-video-thumbnail.jpg" alt="Video thumbnail: machine learning running on an Apple Watch">
+                <span class="video-play" aria-hidden="true">▶</span>
+              </a>
+            </div>
+          </article>
+          <article class="personal-card">
+            <div class="section-label">Interests & languages</div><h3>Curiosity beyond code.</h3><p>Activities that keep me learning, practising patience, and exploring different ways to think.</p>
+            <div class="personal-stack">
+              <div class="personal-item"><div class="personal-icon" aria-hidden="true">♟</div><div><b>Chess</b><p>1,250+ Elo rating. <a class="inline-link" id="chess-link" href="https://www.chess.com/member/YOUR-CHESSCOM-USERNAME" target="_blank" rel="noopener">Chess.com profile ↗</a></p></div></div>
+              <div class="personal-item"><div class="personal-icon" aria-hidden="true">♫</div><div><b>Guitar</b><p>I play the guitar at times (poorly lol)</p></div></div>
+              <div class="personal-item"><div class="personal-icon" aria-hidden="true">文</div><div><b>Languages</b><p>Languages:</p><div class="language-row"><span>English</span><span>Hindi</span><span>Malayalam</span></div></div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-layout">
+        <div class="contact-copy">
+          <div class="section-label">Contact</div>
+          <h2>Get in touch</h2>
+          <p>For PhD opportunities, research discussions, or questions about my projects, email is the best way to reach me.</p>
+          <a class="button primary" href="mailto:gautam.menon01@gmail.com">Email me <span aria-hidden="true">↗</span></a>
+        </div>
+        <nav class="contact-links" aria-label="Other ways to connect">
+          <a href="tel:+919930593727"><span class="contact-link-label">Phone</span><span class="contact-link-value">+91 99305 93727 ↗</span></a>
+          <a href="https://www.linkedin.com/in/gautammelon/" target="_blank" rel="noopener"><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">View profile ↗</span></a>
+          <a id="github-contact-link" href="https://github.com/gautam-menon" target="_blank" rel="noopener"><span class="contact-link-label">GitHub</span><span class="contact-link-value">View profile ↗</span></a>
+        </nav>
+      </div>
+    </section>
+
+
+    <section class="skills" id="skills">
+      <div class="wrap skills-layout">
+        <div><div class="section-label">Technical toolkit</div><h2>Technical skills</h2><p class="skills-lede"></p></div>
+        <div class="skills-stack">
+          <div class="skill-group"><h3>Apple platforms & mobile</h3><div class="skill-list"><span>Swift</span><span>SwiftUI</span><span>UIKit</span><span>Auto Layout</span><span>Storyboard</span><span>watchOS</span><span>Flutter</span><span>Material 3</span></div></div>
+          <div class="skill-group"><h3>Frontend & application architecture</h3><div class="skill-list"><span>Responsive UI</span><span>MVVM</span><span>Reusable Components</span><span>GraphQL</span><span>REST APIs</span><span>App localisation</span><span>RTL layouts</span></div></div>
+          <div class="skill-group"><h3>Backend, cloud & data</h3><div class="skill-list"><span>Node.js</span><span>Express.js</span><span>Firebase</span><span>Firestore</span><span>FCM</span><span>MongoDB</span><span>SQL</span><span>AWS</span></div></div>
+          <div class="skill-group"><h3>ML, frameworks & developer tools</h3><div class="skill-list"><span>Core ML</span><span>ARKit</span><span>MapKit</span><span>SwiftData</span><span>scikit-learn</span><span>TensorFlow</span><span>Alamofire</span><span>Kingfisher</span><span>Crashlytics</span><span>OneSignal</span><span>Sendbird</span><span>Lottie</span><span>CI/CD</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><a href="#top" style="color:#d7e4df;text-decoration:none">Back to top ↑</a></div></footer>
+
+  <script>
+    const CONFIG = {
+      GITHUB_PROFILE_URL: "https://github.com/gautam-menon",
+      SKIN_CANCER_REPO_URL: "https://github.com/gautam-menon/skin_cancer",
+      WATCHOS_REPO_URL: "https://github.com/gautam-menon/Slacker",
+      CHESSCOM_PROFILE_URL: "https://www.chess.com/member/YOUR-CHESSCOM-USERNAME"
+    };
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const githubContactLink = document.getElementById("github-contact-link");
+    const chessLink = document.getElementById("chess-link");
+    const githubHeroLink = document.querySelector('.hero-actions a[href^="https://github.com/"]');
+    if (githubContactLink) githubContactLink.href = CONFIG.GITHUB_PROFILE_URL;
+    if (githubHeroLink) githubHeroLink.href = CONFIG.GITHUB_PROFILE_URL;
+    if (chessLink) chessLink.href = CONFIG.CHESSCOM_PROFILE_URL;
+  </script>
+</body>
+</html>
