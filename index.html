@@ -94,7 +94,7 @@
     .preview-placeholder b { color: var(--ink); display: block; font-size: .85rem; }
     .preview-placeholder span { display: block; font-size: .74rem; margin-top: 3px; }
     .degree-detail { color: var(--muted); font-size: .88rem; margin: 0; }
-    .file-hint { border-top: 1px solid var(--line); padding-top: 14px; color: #74827d; font-size: .75rem; }
+    .file-hint { border-top: 1px solid var(--line); padding-top: 14px; color: #74827d; font-size: .75rem; display: flex; flex-wrap: wrap; gap: 12px 18px; }
 
     .research { background: #eaf0eb; }
     .research-layout { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(260px,.9fr); gap: 28px; align-items: stretch; }
@@ -289,22 +289,25 @@
         <div class="section-top"><div><div class="section-label">Academic background</div><h2>Education</h2></div><p class="section-intro">My academic path started with computer science fundamentals and continued into data science. Add certificate scans or degree documents to the clearly marked spaces below.</p></div>
         <div class="education-grid">
           <article class="degree-card">
-            <div class="degree-top"><div><div class="degree-kind">Postgraduate degree</div><h3>Master of Science<br>Computer Science — Data Science</h3><p class="institution">University of Mumbai</p><div class="degree-tags"><span class="chip gold">Ranked 2nd</span><span class="chip">Data Science specialisation</span></div></div><div class="degree-year">2024</div></div>
+            <div class="degree-top"><div><div class="degree-kind">Postgraduate degree</div><h3>Master of Science<br>Computer Science — Data Science</h3><p class="institution">University of Mumbai</p><div class="degree-tags"><span class="chip gold">CGPA: 7.63 (Ranked 2nd)</span><span class="chip">Data Science specialisation</span></div></div><div class="degree-year">2024</div></div>
             <div class="degree-preview">
               <img src="assets/images/masters-degree.jpg" alt="Master's degree certificate image" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
               <div class="preview-placeholder"><div class="cap" aria-hidden="true">✦</div><div><b>Master’s degree document</b><span>Open the degree PDF below to view the document.</span></div></div>
             </div>
             <p class="degree-detail">Specialisation in Data Science, with a strong foundation for work involving data analysis, predictive modelling, and machine learning.</p>
-            <p class="file-hint"><a class="inline-link" href="assets/degrees/masters-degree.pdf" target="_blank" rel="noopener">View Master’s degree document (PDF) ↗</a></p>
+            <p class="file-hint">
+              <a class="inline-link" href="assets/degrees/masters-degree.pdf" target="_blank" rel="noopener">View Master’s degree ↗</a>
+              <a class="inline-link" href="assets/degrees/Merit Certificate.pdf" target="_blank" rel="noopener">View Merit Certificate ↗</a>
+            </p>
           </article>
           <article class="degree-card">
-            <div class="degree-top"><div><div class="degree-kind">Undergraduate degree</div><h3>Bachelor of Science<br>Computer Science</h3><p class="institution">University of Mumbai</p><div class="degree-tags"><span class="chip">Score listed on CV: 9.15</span><span class="chip gold">Computer Science</span></div></div><div class="degree-year">2022</div></div>
+            <div class="degree-top"><div><div class="degree-kind">Undergraduate degree</div><h3>Bachelor of Science<br>Computer Science</h3><p class="institution">University of Mumbai</p><div class="degree-tags"><span class="chip">CGPA: 9.15</span><span class="chip gold">Computer Science</span></div></div><div class="degree-year">2022</div></div>
             <div class="degree-preview">
               <img src="assets/images/bachelors-degree.jpg" alt="Bachelor's degree certificate image" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
               <div class="preview-placeholder"><div class="cap" aria-hidden="true">✦</div><div><b>Bachelor’s degree document</b><span>Open the degree PDF below to view the document.</span></div></div>
             </div>
             <p class="degree-detail">Undergraduate training in computer science, forming the base for subsequent software engineering and applied technology projects.</p>
-            <p class="file-hint"><a class="inline-link" href="assets/degrees/bachelors-degree.pdf" target="_blank" rel="noopener">View Bachelor’s degree document (PDF) ↗</a></p>
+            <p class="file-hint"><a class="inline-link" href="assets/degrees/bachelors-degree.pdf" target="_blank" rel="noopener">View Bachelor’s degree ↗</a></p>
           </article>
         </div>
         <div class="education-photos">
